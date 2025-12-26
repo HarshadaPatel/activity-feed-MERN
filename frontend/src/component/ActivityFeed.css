@@ -1,0 +1,94 @@
+.feed-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feed-header h2 {
+  margin: 0;
+  color: #1e3a8a;
+}
+
+.feed-header button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.feed-header button:hover {
+  background: #1d4ed8;
+}
+
+.filters {
+  margin: 1rem 0;
+}
+.filters button {
+  margin-right: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f3f4f6;
+  cursor: pointer;
+}
+.filters button:hover {
+  background: #e5e7eb;
+}
+
+.feed-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.feed-list li {
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Color coding by type */
+.feed-list li.comment {
+  background: #dbeafe; /* light blue */
+  border-left: 5px solid #2563eb;
+}
+
+.feed-list li.status {
+  background: #dcfce7; /* light green */
+  border-left: 5px solid #16a34a;
+}
+
+.feed-list li.file {
+  background: #fef9c3; /* light yellow */
+  border-left: 5px solid #ca8a04;
+}
+
+/* Optimistic (pending) items */
+.feed-list li.optimistic {
+  background: #fde68a; /* orange */
+  border-left: 5px solid #d97706;
+}
+
+.feed-meta {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.optimistic {
+  color: #d97706;
+  font-style: italic;
+}
