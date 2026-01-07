@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { createActivity } from '../api/createActivity.js';
 import './ActivityFeed.css';
+import myLogo from '../assets/logo.png'; 
+
 
 export default function ActivityFeed({ tenantId }) {
   const [items, setItems] = useState([]);
@@ -108,10 +110,14 @@ export default function ActivityFeed({ tenantId }) {
 
   return (
     <div className="feed-container">
-      <div className="feed-header">
-        <h2>Activity Feed</h2>
-        <button onClick={addActivityOptimistic}>➕ Add Activity</button>
-      </div>
+     <div className="feed-header">
+  <h2>Activity Feed</h2>
+  <div className="feed-actions">
+    <button onClick={addActivityOptimistic}>➕ Add Activity</button>
+    <img src={myLogo} alt="My Logo" className="logo" />
+  </div>
+</div>
+
 
       {/* Filter buttons */}
       <div className="filters">

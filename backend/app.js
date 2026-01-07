@@ -1,91 +1,23 @@
-
 import express from 'express';
 import mongoose from 'mongoose';
-import Activity from './models/Activity.js';
 import cors from 'cors';
+import tenantMiddleware from './middleware/tenant.js';
+import activityRoutes from './routes/activities.js';
 
 const app = express();
 
 // Allow requests from your frontend (http://localhost:5173)
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173','http://localhost:5173'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'x-tenant-id']
 }));
 app.use(express.json());
 
 // Tenant middleware
-app.use((req, res, next) => {
-  const tenantId = req.header('x-tenant-id');
-  if (!tenantId) return res.status(400).json({ error: 'Missing x-tenant-id' });
-  req.tenantId = tenantId;
-  next();
-});
+app.use(tenantMiddleware);
 
-// POST /activities – Create activity
-app.post('/activities', async (req, res) => {
-  try {
-    const { actorId, actorName, type, entityId, metadata } = req.body;
-    if (!actorId || !actorName || !type || !entityId) {
-      return res.status(400).json({ error: 'Missing required fields' });
-    }
-
-    const doc = await Activity.create({
-      tenantId: req.tenantId,
-      actorId,
-      actorName,
-      type,
-      entityId,
-      metadata,
-      createdAt: new Date(),
-    });
-
-    // Return projection with stringified id
-    const { _id, tenantId, ...rest } = doc.toObject();
-    res.status(201).json({ id: _id.toString(), ...rest });
-  } catch (e) {
-    res.status(500).json({ error: 'Failed to create activity' });
-  }
-});
-
-app.get('/activities', async (req, res) => {
-  try {
-    const limit = Math.min(parseInt(req.query.limit || '20', 10), 100);
-
-    const cursorDate = req.query.cursor ? new Date(req.query.cursor) : new Date();
-
-    const query = {
-      tenantId: req.tenantId,
-      createdAt: { $lt: cursorDate }
-    };
-
-    const docs = await Activity.find(
-      query,
-      {
-        actorId: 1,
-        actorName: 1,
-        type: 1,
-        entityId: 1,
-        metadata: 1,
-        createdAt: 1
-      }
-    )
-      .sort({ createdAt: -1 })
-      .limit(limit)
-      .lean();
-
-    const nextCursor = docs.length
-      ? docs[docs.length - 1].createdAt.toISOString()
-      : null;
-
-    res.json({
-      items: docs.map(d => ({ id: d._id.toString(), ...d })),
-      nextCursor,
-      hasMore: !!nextCursor
-    });
-  } catch (e) {
-    res.status(500).json({ error: 'Failed to fetch activities' });
-  }
-});
+// Activity routes
+app.use('/activities', activityRoutes);
 
 export default app;

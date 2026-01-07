@@ -7,12 +7,49 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   font-family: 'Segoe UI', Tahoma, sans-serif;
 }
-
+/*
 .feed-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+*/
+
+.feed-header {
+  display: flex;
+  flex-direction: column;   /* stack title above actions */
+  gap: 0.75rem;
+}
+
+.feed-header h2 {
+  margin: 0;
+  color: #1e3a8a;
+}
+
+.feed-actions {
+  display: flex;
+  justify-content: space-between; /* button left, logo right */
+  align-items: center;
+}
+
+.feed-actions button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.feed-actions button:hover {
+  background: #1d4ed8;
+}
+
+.feed-actions .logo {
+  height: 40px;   /* smaller logo inside card */
+  width: auto;
+}
+
 
 .feed-header h2 {
   margin: 0;
@@ -63,32 +100,42 @@
 
 /* Color coding by type */
 .feed-list li.comment {
-  background: #dbeafe; /* light blue */
+  background: #4878b7; /* light blue */
   border-left: 5px solid #2563eb;
 }
 
 .feed-list li.status {
-  background: #dcfce7; /* light green */
+  background: #0eb248; /* light green */
   border-left: 5px solid #16a34a;
 }
 
 .feed-list li.file {
-  background: #fef9c3; /* light yellow */
+  background: #b31d7e; /* light yellow */
   border-left: 5px solid #ca8a04;
 }
 
 /* Optimistic (pending) items */
 .feed-list li.optimistic {
-  background: #fde68a; /* orange */
-  border-left: 5px solid #d97706;
+  background: #e4bc1b; /* orange */
+  border-left: 5px solid #e05c24;
 }
 
 .feed-meta {
   font-size: 0.8rem;
-  color: #555;
+  color: #171313;
 }
 
 .optimistic {
   color: #d97706;
   font-style: italic;
 }
+/*
+.logo {
+  display: block;
+  margin: 0 auto 1rem;
+  width: 250px;   
+  height: auto;   
+}
+*/
+
+.feed-actions .logo { height: 150px; /* or more */ width: auto; }
