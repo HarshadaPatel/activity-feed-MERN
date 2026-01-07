@@ -123,16 +123,7 @@ Backend → Node.js  + Express + MongoDB, tested
 Frontend → React + Vite, tested with Cypress
 Assignment → Build a tenant‑isolated activity feed with pagination, optimistic UI, and filtering
 
-
-<img width="1786" height="903" alt="image8" src="https://github.com/user-attachments/assets/41c58829-92b9-46bd-8d73-942a5f0a83e4" />
-<img width="1455" height="941" alt="image7" src="https://github.com/user-attachments/assets/9107e699-dd85-40bc-bc8e-5566d72ff5f6" />
-<img width="1708" height="832" alt="image6" src="https://github.com/user-attachments/assets/8b04d0e5-b88c-41fa-b66a-1ac7617346e9" />
-<img width="1095" height="949" alt="Image1" src="https://github.com/user-attachments/assets/b4814440-ae88-4b5c-ab95-ff31bc3cd803" />
-<img width="1058" height="876" alt="image2" src="https://github.com/user-attachments/assets/4d416053-4ffb-4334-b2bb-1531ac624dff" />
-<img width="1005" height="785" alt="image3" src="https://github.com/user-attachments/assets/59d70410-3437-4501-9978-811112b64303" />
-<img width="1193" height="873" alt="image4" src="https://github.com/user-attachments/assets/392b9bc0-0a49-4c0a-beb5-0a6f32c48b75" />
-
-
+Images attached into snapshots folder 
 
 
 
